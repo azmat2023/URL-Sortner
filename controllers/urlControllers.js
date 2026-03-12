@@ -3,6 +3,8 @@ const {nanoid}=require('nanoid')
 
 exports.createShortUrl= async(req,res)=>{
 
+    
+
 
     const {orginalUrl} = req.body;
     const shortCode = nanoid(6);
@@ -23,6 +25,7 @@ exports.redirectUrl=async (req,res)=>{
     const url = await Url.findOne({
         shortCode:req.params.code
     })
+
 
 
     if(!url){
