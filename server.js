@@ -6,7 +6,7 @@ const urlRoutes = require('./routes/urlRoutes');
 
 
 
-const port=process.env.PORT;
+const port=process.env.PORT ||3000;
 const app = express();
 
 connectDB();
@@ -22,7 +22,7 @@ app.set('view engine','ejs');
 
 
 app.get("/",(req,res)=>{
-    res.render('home')
+    res.render('home',{shortUrl:null})
     // res.json({m:'This is the end'})
 })
 

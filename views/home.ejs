@@ -10,11 +10,18 @@
     <form action="/shorten" method="POST">
         <label for="">Enter the Url : </label>
 
-        <input type="text" 
-        name="orginalUrl" 
-        placeholder="https://example.com">
+        <input type="text" name="orginalUrl" placeholder="https://example.com">
 
         <button type="submit">submit</button>
+
+        
+            <% if (shortUrl) { %>
+                <h3>Your Short URL:</h3>
+                <a href="<%= shortUrl %>">
+                    <%= shortUrl %>
+                </a>
+                <% } %>
+        
     </form>
 </body>
 
