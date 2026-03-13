@@ -43,6 +43,7 @@ app.get("/about",(req,res)=>{res.render("about",{ success: null, error: null })}
 
 
 
+app.use('/shorten',urlRoutes)
 
 app.use('/',urlRoutes)
 
