@@ -4,12 +4,12 @@ const router = express.Router();
 
 
 
-
-router.get("/:code",redirectUrl)
-router.get("/health",serverOn)
-
 router.post("/shorten",createShortUrl)
 
+
+router.get("/health",serverOn)
+
+router.get("/:code",redirectUrl)
 
 
 module.exports = router;
