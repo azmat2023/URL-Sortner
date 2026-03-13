@@ -6,42 +6,31 @@ exports.createShortUrl = async (req, res) => {
     const shortCode = nanoid(6);
     const existingUrl = await Url.findOne({ orginalUrl })
 
-  
-    
     if (existingUrl) {
-        
+
         // const shortUrl = `http://localhost:${process.env.PORT}/${existingUrl.shortCode}`
-          const shortUrl = `${req.protocol}://${req.get("host")}/${existingUrl.shortCode}`;
-        return res.render('home',{shortUrl})
-        
+        const shortUrl = `${req.protocol}://${req.get("host")}/${existingUrl.shortCode}`;
+        return res.render('home', { shortUrl })
+
     }
-    
-    
-        // const shortUrl = `http://localhost:${process.env.PORT}/${shortCode}`
-          const shortUrl = `${req.protocol}://${req.get("host")}/${shortCode}`;
-    
-    
+    // const shortUrl = `http://localhost:${process.env.PORT}/${shortCode}`
+    const shortUrl = `${req.protocol}://${req.get("host")}/${shortCode}`;
+
     const url = await Url.create({
         orginalUrl,
-        shortCode, 
+        shortCode,
         shortUrl,
-        
+
     })
-
-   
-        res.render(
-            "home",{shortUrl}
-        )
-
-
+    res.render(
+        "home", { shortUrl }
+    )
 }
 
 exports.redirectUrl = async (req, res) => {
     const url = await Url.findOne({
         shortCode: req.params.code
     })
-
-
 
     if (!url) {
         return res.status(404).json({ message: "Url not found" })
@@ -51,7 +40,7 @@ exports.redirectUrl = async (req, res) => {
 }
 
 
-exports.serverOn=(req,res)=>{
-    res.json({message:"Server is on"})
+exports.serverOn = (req, res) => {
+    res.json({ message: "Server is on" })
 
 }

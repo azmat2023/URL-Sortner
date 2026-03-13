@@ -13,10 +13,10 @@ router.post("/login",handleUserLogin)
 
 router.post('/contact', handleContact)
 
+router.get("/:code",redirectUrl)
 
 router.get("/health",serverOn)
 
-router.get("/:code",redirectUrl)
 
 
 module.exports = router;
