@@ -7,13 +7,10 @@ exports.createShortUrl = async (req, res) => {
     const existingUrl = await Url.findOne({ orginalUrl })
 
     if (existingUrl) {
-
-        // const shortUrl = `http://localhost:${process.env.PORT}/${existingUrl.shortCode}`
         const shortUrl = `${req.protocol}://${req.get("host")}/${existingUrl.shortCode}`;
         return res.render('home', { shortUrl })
 
     }
-    // const shortUrl = `http://localhost:${process.env.PORT}/${shortCode}`
     const shortUrl = `${req.protocol}://${req.get("host")}/${shortCode}`;
 
     const url = await Url.create({
@@ -41,6 +38,6 @@ exports.redirectUrl = async (req, res) => {
 
 
 exports.serverOn = (req, res) => {
-    res.json({ message: "Server is on" })
+    res.json({ message: "Server is on" });
 
 }
