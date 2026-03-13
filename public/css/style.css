@@ -294,3 +294,20 @@ input[type="text"]:focus {
   .card    { padding: 2rem 1.25rem; border-radius: 16px; }
   .navbar  { padding: 0 1.25rem; }
 }
+
+
+.nav-signup-btn {
+    text-decoration: none;
+    padding: 0.45rem 1.1rem;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-signup-btn:hover {
+    background: var(--accent);
+    color: #fff;
+}

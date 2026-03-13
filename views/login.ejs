@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In — SnapLink</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="logo">Snap<span>Link</span></a>
+        <a href="/signup" class="nav-link">Don't have an account? <strong>Sign up</strong></a>
+    </nav>
+
+    <main class="page-center">
+        <div class="card">
+
+            <div class="card-top">
+                <div class="brand-icon">⚡</div>
+                <h2>Welcome back</h2>
+                <p>Log in to your SnapLink account</p>
+            </div>
+
+            <% if (typeof error !== 'undefined' && error) { %>
+                <div class="alert alert-error"><%= error %></div>
+            <% } %>
+
+            <% if (typeof success !== 'undefined' && success) { %>
+                <div class="alert alert-success"><%= success %></div>
+            <% } %>
+
+            <form action="/login" method="POST" class="form" novalidate>
+
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                        value="<%= typeof formData !== 'undefined' ? formData.email || '' : '' %>"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label for="password">Password</label>
+                        <a href="/forgot-password" class="forgot-link">Forgot password?</a>
+                    </div>
+                    <div class="input-wrap">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+                        <button type="button" class="eye-btn" id="togglePass" title="Show password">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+
+                <button type="submit" class="btn-submit">Log in</button>
+
+            </form>
+
+            <div class="divider"><span>or</span></div>
+
+            <p class="signup-hint">New to SnapLink? <a href="/signup">Create a free account</a></p>
+
+        </div>
+    </main>
+
+<script src="/script/login.js"></script>
+</body>
+</html>

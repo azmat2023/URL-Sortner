@@ -1,10 +1,14 @@
 const express = require("express")
-const {createShortUrl,redirectUrl, serverOn}=require('../controllers/urlControllers')
+const {createShortUrl,redirectUrl, serverOn}=require('../controllers/urlControllers');
+const { handleUserSignUP ,handleUserLogin} = require("../controllers/userControllers");
+
 const router = express.Router();
 
 
 
-router.post("/shorten",createShortUrl)
+router.post("/",createShortUrl)
+router.post("/signup",handleUserSignUP)
+router.post("/login",handleUserLogin)
 
 
 router.get("/health",serverOn)
